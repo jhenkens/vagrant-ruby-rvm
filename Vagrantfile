@@ -8,8 +8,19 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "precise64"
+  config.vm.hostname = "vagrant-ruby-rvm"
+
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 1024
+    v.cpus = 2
+  end
 
   config.vm.provision :shell, :path => "bootstrap.sh"
+  config.vm.provision :shell, :inline => "mkdir -p ~/Dropbox/ConfigFiles"
+  config.vm.provision :file, :source => '~/Dropbox/ConfigFiles/.bash_profile', :destination => "/home/vagrant/.bash_profile"
+  config.vm.provision :file, :source => '~/Dropbox/ConfigFiles/.bash_profile_linux', :destination => "/home/vagrant/Dropbox/ConfigFiles/.bash_profile_linux"
+  config.vm.provision :file, :source => '~/Dropbox/ConfigFiles/.bash_aliases', :destination => "/home/vagrant/Dropbox/ConfigFiles/.bash_aliases"
+  config.vm.provision :file, :source => '~/Dropbox/ConfigFiles/.gitconfig', :destination => "/home/vagrant/.gitconfig"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
