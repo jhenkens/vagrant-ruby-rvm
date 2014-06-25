@@ -2,7 +2,8 @@
 
 
 apt-get update
-#apt-get upgrade -y
+echo "set grub-pc/install_devices /dev/sda" | debconf-communicate
+apt-get upgrade -y
 apt-get install -y sudo bash curl git patch bzip2 build-essential openssl \
 libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev \
 libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev \
