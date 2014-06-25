@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 cd /home/vagrant
-\curl -L https://get.rvm.io | bash -s stable
+curl -L https://get.rvm.io | bash -s stable
 
 source /home/vagrant/.profile
 source /home/vagrant/.rvm/scripts/rvm
